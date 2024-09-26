@@ -22,7 +22,7 @@ export default function Navbar() {
         <div className="p-3 bg-gradient-to-br from-green-400 to-teal-500 rounded-2xl shadow-neumorphic">
           <FaQrcode className="text-white text-2xl" />
         </div>
-        <Link href="/" className="ml-4 text-2xl font-bold text-gray-800 hover:text-green-600 transition duration-300">QRappify</Link>
+        <Link href="/" className="ml-4 text-2xl font-bold text-gray-800 hover:text-[#00cc99] transition duration-300">QRappify</Link>
       </div>
 
       {/* Hamburger Menu Icon */}

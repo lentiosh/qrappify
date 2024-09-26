@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-gradient-to-br from-green-50 to-blue-50 text-gray-800;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply text-gray-900;
+}
+
+@layer utilities {
+  .shadow-neumorphic {
+    box-shadow: 5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff;
+  }
+
+  .shadow-neumorphic-inset {
+    box-shadow: inset 5px 5px 10px #d1d9e6, inset -5px -5px 10px #ffffff;
+  }
+
+  .shadow-neumorphic-hover {
+    box-shadow: 2px 2px 5px #d1d9e6, -2px -2px 5px #ffffff;
+  }
+
+  .shadow-neumorphic-focus {
+    box-shadow: inset 2px 2px 5px #d1d9e6, inset -2px -2px 5px #ffffff;
+  }
+}

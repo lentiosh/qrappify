@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   FaLink,
   FaTextHeight,
@@ -26,20 +27,20 @@ const buttonTypes = [
 
 export default function QRCodeTypeButtons({ qrType, setQrType }) {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-8">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mb-8">
       {buttonTypes.map(({ type, icon: Icon }) => (
         <button
           key={type}
           type="button"
           onClick={() => setQrType(type)}
-          className={`flex items-center justify-center p-4 rounded-full transition-all duration-300 ${
+          className={`flex flex-col items-center justify-center p-1 bg-white rounded-2xl transition-colors duration-200 h-20 w-full border ${
             qrType === type
-              ? 'bg-gradient-to-br from-green-400 to-blue-500 text-white shadow-neumorphic-inset'
-              : 'bg-white text-gray-700 shadow-neumorphic hover:shadow-neumorphic-hover'
+              ? 'bg-green-100 text-green-800 border-green-300'
+              : 'text-gray-800 hover:bg-green-50 border-gray-200'
           }`}
         >
-          <Icon className={`text-2xl ${qrType === type ? 'animate-pulse' : ''}`} />
-          <span className="ml-2 font-medium">{type}</span>
+          <Icon className="text-xl mb-1" />
+          <span className="text-xs font-semibold text-center">{type}</span>
         </button>
       ))}
     </div>

@@ -8,12 +8,28 @@ module.exports = {
   theme: {
     extend: {
       boxShadow: {
-        'neumorphic-light': '5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff',
-        'neumorphic-dark': 'inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #ffffff',
+        sm: '0 1px 2px rgba(0, 0, 0, 0.05)',
+        md: '0 4px 6px rgba(0, 0, 0, 0.1)',
+        lg: '0 10px 15px rgba(0, 0, 0, 0.1)',
       },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        gray: {
+          50: '#f9fafb',
+          100: '#f3f4f6',
+          200: '#e5e7eb',
+          300: '#d1d5db',
+          400: '#9ca3af',
+          500: '#6b7280',
+          600: '#4b5563',
+          700: '#374151',
+          800: '#1f2937',
+          900: '#111827',
+        },
+        white: '#ffffff',
+      },
+      spacing: {
+        88: '22rem',
+        96: '24rem',
       },
     },
   },

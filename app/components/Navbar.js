@@ -8,15 +8,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="relative w-full bg-white py-4 px-6 md:px-12 flex justify-between items-center shadow-neumorphic z-50">
-      {/* Background Abstract Shape */}
-      <div
-        className="absolute inset-0 bg-gradient-to-r from-green-100 via-teal-50 to-blue-100 opacity-30"
-        style={{
-          clipPath: 'polygon(0 0, 100% 0, 85% 100%, 0% 100%)',
-        }}
-      ></div>
-
+    <nav className="relative w-full bg-white py-2 px-10 md:px-20 flex justify-between items-center border-b border-gray-200 z-50 font-medium">
       {/* Logo Section */}
       <div className="flex items-center z-10">
         <div className="p-3 bg-gradient-to-br from-green-400 to-teal-500 rounded-2xl shadow-neumorphic">
@@ -29,39 +21,54 @@ export default function Navbar() {
       <div className="md:hidden z-10">
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="focus:outline-none text-gray-600 hover:text-green-500 transition duration-300 p-2 rounded-full shadow-neumorphic-light"
+          className="focus:outline-none text-gray-700 hover:text-teal-500 transition duration-200 p-2"
         >
           {menuOpen ? <FaTimes className="text-2xl" /> : <FaBars className="text-2xl" />}
         </button>
       </div>
 
       {/* Navigation Links (Desktop) */}
-      <div className="hidden md:flex space-x-6 z-10 font-semibold">
-        {['Home', 'About', 'Contact'].map((item) => (
+      <div className="hidden md:flex space-x-4 z-10 text-md font-semibold">
+        {['Home', 'Features', 'Pricing', 'Contact'].map((item) => (
           <Link
             key={item}
             href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
-            className="text-gray-700 hover:text-green-500 transition duration-300 px-4 py-2 rounded-full shadow-neumorphic hover:shadow-neumorphic-hover"
+            className="text-gray-800 hover:bg-gray-100 transition duration-200 px-3 py-2 rounded-full"
           >
             {item}
           </Link>
         ))}
+        {/* Minimalistic Sign-In Button */}
+        <Link
+          href="/signin"
+          className="text-[#fff] bg-gradient-to-br from-green-400 to-teal-500 shadow-neumorphic px-5 py-2 rounded-full"
+        >
+          Sign In
+        </Link>
       </div>
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="absolute top-full left-0 w-full bg-white shadow-neumorphic z-20 md:hidden">
+        <div className="absolute top-full left-0 w-full bg-white z-20 border-t border-gray-100 md:hidden">
           <div className="flex flex-col items-center py-4 space-y-4">
-            {['Home', 'About', 'Contact'].map((item) => (
+            {['Home', 'Features', 'Pricing', 'Contact'].map((item) => (
               <Link
                 key={item}
                 href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
-                className="text-gray-700 hover:text-green-500 transition duration-300 px-6 py-3 rounded-full shadow-neumorphic hover:shadow-neumorphic-hover w-3/4 text-center"
+                className="text-gray-700 hover:bg-gray-100 transition duration-200 text-lg w-3/4 text-center py-2 rounded-full"
                 onClick={() => setMenuOpen(false)}
               >
                 {item}
               </Link>
             ))}
+            {/* Minimalistic Sign-In Button for Mobile */}
+            <Link
+              href="/signin"
+              className="text-white bg-teal-500 hover:bg-teal-600 transition duration-200 px-6 py-2 rounded-full"
+              onClick={() => setMenuOpen(false)}
+            >
+              Sign In
+            </Link>
           </div>
         </div>
       )}

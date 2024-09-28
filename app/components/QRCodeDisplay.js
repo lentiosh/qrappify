@@ -6,7 +6,7 @@ import { FaQrcode } from 'react-icons/fa';
 
 export default function QRCodeDisplay({ qrCodeData, error }) {
   return (
-    <div className="flex flex-col items-center bg-gray-50 p-8 rounded-lg shadow-neumorphic-light w-full max-w-md">
+    <div className="sticky top-4 flex flex-col items-center bg-gray-50 p-8 rounded-lg shadow-lg w-full max-w-md">
       {qrCodeData ? (
         <>
           <Image
@@ -21,7 +21,7 @@ export default function QRCodeDisplay({ qrCodeData, error }) {
       ) : (
         <div className="text-gray-500 text-center flex flex-col items-center justify-center">
           <p className="mb-4 text-lg">Your QR code will appear here after generation.</p>
-          <div className="p-4 rounded-full shadow-neumorphic-dark">
+          <div className="p-4 rounded-full shadow-md">
             <FaQrcode className="text-6xl text-gray-400" />
           </div>
         </div>

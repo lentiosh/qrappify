@@ -5,7 +5,9 @@ import QRCodeTypeButtons from './QRCodeTypeButtons';
 import QRCodeTypeForms from './QRCodeTypeForms';
 import QRCodeDisplay from './QRCodeDisplay';
 import { generateQRCodeAction } from '../actions/actions';
-import { FaQrcode, FaPalette, FaCog } from 'react-icons/fa';
+import { FaQrcode, FaCog } from 'react-icons/fa';
+import Image from 'next/image';
+import ImageIcon from '@/app/images/qr-code.png'
 
 export default function QRCodeGenerator() {
   const [qrCodeData, setQrCodeData] = useState(null);
@@ -45,15 +47,13 @@ export default function QRCodeGenerator() {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row w-full h-full p-8 bg-gradient-to-br from-green-50 to-blue-50">
+    <div className="flex flex-col lg:flex-row w-full h-full p-4 lg:p-8 bg-gray-50">
       {/* Left Section */}
-      <div className="w-full lg:w-2/3 p-8 bg-white rounded-3xl shadow-neumorphic">
+      <div className="w-full lg:w-2/3 p-8 bg-white rounded-xl border border-gray-300 shadow-sm">
         <form onSubmit={handleGenerate} className="w-full">
-          <div className="mb-8">
-            <QRCodeTypeButtons qrType={qrType} setQrType={setQrType} />
-          </div>
+          <QRCodeTypeButtons qrType={qrType} setQrType={setQrType} />
           
-          <div className="mb-8">
+          <div className="border-t border-gray-300 pt-6 mb-6">
             <QRCodeTypeForms qrType={qrType} />
           </div>
 
@@ -115,7 +115,7 @@ export default function QRCodeGenerator() {
                       onClick={() => setQuality(q)}
                       className={`px-4 py-2 rounded-full focus:outline-none transition-all duration-200 ${
                         quality === q
-                          ? 'bg-green-500 text-white shadow-md'
+                          ? 'bg-gray-800 text-white shadow-md'
                           : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                       }`}
                     >
@@ -139,7 +139,7 @@ export default function QRCodeGenerator() {
             <button
               type="submit"
               disabled={loading}
-              className={`flex items-center justify-center px-8 py-4 bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 ${
+              className={`flex items-center justify-center px-8 py-4 bg-gradient-to-r from-green-400 to-teal-500 text-white font-bold text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 ${
                 loading ? 'opacity-50 cursor-not-allowed' : ''
               }`}
             >
@@ -162,10 +162,16 @@ export default function QRCodeGenerator() {
       {/* Right Section */}
       <div
         ref={qrCodeSectionRef}
-        className="w-full lg:w-1/3 p-8 mt-8 lg:mt-0 lg:ml-8 bg-white rounded-3xl shadow-neumorphic"
+        className="w-full lg:w-1/3 p-8 mt-8 lg:mt-0 lg:ml-8 bg-white rounded-xl border border-gray-300 shadow-sm"
       >
         <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center">
-          <FaQrcode className="mr-3 text-green-500" />
+          <Image 
+          src={ImageIcon} 
+          className="mr-3 text-blue-500"
+          alt='imageIcon'
+          width={40}
+          height={35} 
+          />
           Generated QR Code
         </h2>
         <QRCodeDisplay qrCodeData={qrCodeData} error={error} />

@@ -13,16 +13,16 @@ export default function QRCodeDisplay({ qrCodeData, error }) {
             src={qrCodeData.pngDataUrl}
             alt="Generated QR Code"
             className="w-full max-w-xs h-auto shadow-lg rounded-md"
-            width={300}
+            width={320}
             height={300}
           />
           <DownloadButton qrCodeData={qrCodeData} />
         </>
       ) : (
-        <div className="text-gray-500 text-center flex flex-col items-center justify-center">
+        <div className="text-gray-300 text-center flex flex-col items-center justify-center">
           <p className="mb-4 text-lg">Your QR code will appear here after generation.</p>
           <div className="p-4 rounded-full shadow-md">
-            <FaQrcode className="text-6xl text-gray-400" />
+            <FaQrcode className="text-6xl text-gray-200" />
           </div>
         </div>
       )}

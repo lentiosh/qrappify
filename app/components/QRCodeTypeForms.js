@@ -1,283 +1,213 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import {
-  FaLink,
-  FaTextHeight,
-  FaEnvelope,
-  FaSms,
-  FaIdCard,
-  FaWifi,
-  FaCalendarAlt,
-  FaMapMarkerAlt,
-  FaPhoneAlt,
-  FaWhatsapp,
-} from 'react-icons/fa';
-
-const InputField = ({ icon: Icon, ...props }) => (
-  <motion.div 
-    className="relative mb-6"
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.3 }}
-  >
-    <Icon className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#4cd681] text-xl" />
-    <input
-      {...props}
-      className="w-full p-4 pl-12 text-lg bg-white border-2 border-gray-300 rounded-lg focus:ring-4 focus:ring-[#4cd681]/20 focus:border-[#4cd681] outline-none transition-all duration-300 hover:border-[#4cd681]"
-    />
-  </motion.div>
-);
-
-const TextArea = ({ icon: Icon, ...props }) => (
-  <motion.div 
-    className="relative mb-6"
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.3 }}
-  >
-    <Icon className="absolute left-4 top-6 text-[#4cd681] text-xl" />
-    <textarea
-      {...props}
-      className="w-full p-4 pl-12 text-lg bg-white border-2 border-gray-300 rounded-lg focus:ring-4 focus:ring-[#4cd681]/20 focus:border-[#4cd681] outline-none transition-all duration-300 hover:border-[#4cd681] min-h-[120px]"
-    />
-  </motion.div>
-);
-
-const Select = ({ icon: Icon, ...props }) => (
-  <motion.div 
-    className="relative mb-6"
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.3 }}
-  >
-    <Icon className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#4cd681] text-xl" />
-    <select
-      {...props}
-      className="w-full p-4 pl-12 text-lg bg-white border-2 border-gray-300 rounded-lg focus:ring-4 focus:ring-[#4cd681]/20 focus:border-[#4cd681] outline-none transition-all duration-300 hover:border-[#4cd681] appearance-none"
-    />
-  </motion.div>
-);
+import InputField from './InputField';
 
 export default function QRCodeTypeForms({ qrType }) {
   return (
-    <motion.div 
-      className="w-full transition-all duration-300"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
-      <input type="hidden" name="qrType" value={qrType} />
-
+    <div>
       {qrType === 'URL' && (
         <InputField
-          icon={FaLink}
+          icon="FaLink"
           type="url"
           name="url"
           placeholder="Enter URL"
           required
         />
       )}
-
       {qrType === 'Text' && (
-        <TextArea
-          icon={FaTextHeight}
+        <InputField
+          icon="FaTextHeight"
+          type="text"
           name="text"
-          placeholder="Enter text"
+          placeholder="Enter Text"
           required
         />
       )}
-
       {qrType === 'Email' && (
         <>
           <InputField
-            icon={FaEnvelope}
+            icon="FaEnvelope"
             type="email"
             name="emailAddress"
-            placeholder="Recipient Email"
+            placeholder="Enter Email Address"
             required
           />
           <InputField
-            icon={FaTextHeight}
+            icon="FaEnvelope"
             type="text"
             name="emailSubject"
-            placeholder="Subject"
+            placeholder="Enter Email Subject"
           />
-          <TextArea
-            icon={FaTextHeight}
+          <InputField
+            icon="FaEnvelope"
+            type="text"
             name="emailBody"
-            placeholder="Message"
+            placeholder="Enter Email Body"
           />
         </>
       )}
-
       {qrType === 'SMS' && (
         <>
           <InputField
-            icon={FaSms}
+            icon="FaSms"
             type="tel"
             name="smsNumber"
-            placeholder="Recipient Phone Number"
+            placeholder="Enter SMS Number"
             required
           />
-          <TextArea
-            icon={FaTextHeight}
+          <InputField
+            icon="FaSms"
+            type="text"
             name="smsMessage"
-            placeholder="Enter your message"
+            placeholder="Enter SMS Message"
           />
         </>
       )}
-
       {qrType === 'vCard' && (
         <>
           <InputField
-            icon={FaIdCard}
+            icon="FaIdCard"
             type="text"
             name="firstName"
-            placeholder="First Name"
+            placeholder="Enter First Name"
+            required
           />
           <InputField
-            icon={FaIdCard}
+            icon="FaIdCard"
             type="text"
             name="lastName"
-            placeholder="Last Name"
+            placeholder="Enter Last Name"
+            required
           />
           <InputField
-            icon={FaPhoneAlt}
+            icon="FaPhoneAlt"
             type="tel"
             name="phone"
-            placeholder="Phone Number"
+            placeholder="Enter Phone Number"
           />
           <InputField
-            icon={FaEnvelope}
+            icon="FaEnvelope"
             type="email"
             name="email"
-            placeholder="Email"
+            placeholder="Enter Email"
           />
           <InputField
-            icon={FaIdCard}
+            icon="FaIdCard"
             type="text"
             name="organization"
-            placeholder="Organization"
+            placeholder="Enter Organization"
           />
         </>
       )}
-
       {qrType === 'WiFi' && (
         <>
           <InputField
-            icon={FaWifi}
+            icon="FaWifi"
             type="text"
             name="wifiSsid"
-            placeholder="Network SSID"
+            placeholder="Enter WiFi SSID"
             required
           />
           <InputField
-            icon={FaWifi}
-            type="text"
+            icon="FaWifi"
+            type="password"
             name="wifiPassword"
-            placeholder="Password"
+            placeholder="Enter WiFi Password"
           />
-          <Select
-            icon={FaWifi}
+          <InputField
+            icon="FaWifi"
+            type="text"
             name="wifiEncryption"
-          >
-            <option value="">None</option>
-            <option value="WPA">WPA/WPA2</option>
-            <option value="WEP">WEP</option>
-          </Select>
-          <motion.label 
-            className="flex items-center mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <input type="checkbox" name="wifiHidden" className="mr-3 w-5 h-5 text-[#4cd681]" />
-            <span className="text-gray-700 text-lg">Hidden Network</span>
-          </motion.label>
+            placeholder="Enter WiFi Encryption (e.g., WPA)"
+          />
+          <label className="flex items-center space-x-2">
+            <input
+              type="checkbox"
+              name="wifiHidden"
+              className="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
+            />
+            <span className="text-gray-700">Hidden Network?</span>
+          </label>
         </>
       )}
-
       {qrType === 'Event' && (
         <>
           <InputField
-            icon={FaCalendarAlt}
+            icon="FaCalendarAlt"
             type="text"
             name="eventTitle"
-            placeholder="Event Title"
+            placeholder="Enter Event Title"
             required
           />
           <InputField
-            icon={FaMapMarkerAlt}
+            icon="FaMapMarkerAlt"
             type="text"
             name="eventLocation"
-            placeholder="Event Location"
+            placeholder="Enter Event Location"
           />
           <InputField
-            icon={FaCalendarAlt}
+            icon="FaCalendarAlt"
             type="datetime-local"
             name="eventStart"
-            placeholder="Start Date & Time"
-            required
+            placeholder="Enter Event Start Date & Time"
           />
           <InputField
-            icon={FaCalendarAlt}
+            icon="FaCalendarAlt"
             type="datetime-local"
             name="eventEnd"
-            placeholder="End Date & Time"
+            placeholder="Enter Event End Date & Time"
           />
-          <TextArea
-            icon={FaTextHeight}
+          <InputField
+            icon="FaTextHeight"
+            type="text"
             name="eventDescription"
-            placeholder="Description"
+            placeholder="Enter Event Description"
           />
         </>
       )}
-
       {qrType === 'Geo' && (
         <>
           <InputField
-            icon={FaMapMarkerAlt}
+            icon="FaMapMarkerAlt"
             type="text"
             name="geoLatitude"
-            placeholder="Latitude"
+            placeholder="Enter Latitude"
             required
           />
           <InputField
-            icon={FaMapMarkerAlt}
+            icon="FaMapMarkerAlt"
             type="text"
             name="geoLongitude"
-            placeholder="Longitude"
+            placeholder="Enter Longitude"
             required
           />
         </>
       )}
-
       {qrType === 'Phone' && (
         <InputField
-          icon={FaPhoneAlt}
+          icon="FaPhoneAlt"
           type="tel"
           name="phoneNumber"
-          placeholder="Phone Number"
+          placeholder="Enter Phone Number"
           required
         />
       )}
-
       {qrType === 'WhatsApp' && (
         <>
           <InputField
-            icon={FaWhatsapp}
+            icon="FaWhatsapp"
             type="tel"
             name="waNumber"
-            placeholder="WhatsApp Number (with country code)"
+            placeholder="Enter WhatsApp Number"
             required
           />
-          <TextArea
-            icon={FaTextHeight}
+          <InputField
+            icon="FaTextHeight"
+            type="text"
             name="waMessage"
-            placeholder="Message"
+            placeholder="Enter WhatsApp Message"
           />
         </>
       )}
-    </motion.div>
+    </div>
   );
 }
